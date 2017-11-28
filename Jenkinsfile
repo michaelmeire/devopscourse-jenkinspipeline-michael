@@ -17,5 +17,6 @@ node {
    }
    stage('Test') {
        milestone()
+       sh './gradlew check'
    }
 }
