@@ -21,6 +21,7 @@ node {
    stage('Test') {
        milestone()
        sh './gradlew test'
+       // https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Reporting-test-results-and-storing-artifacts
        archive "build/test-results/**/*"
        junit 'build/test-results/**/*.xml'
    }
