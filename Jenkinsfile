@@ -13,11 +13,11 @@ node {
            ]
        )
        sh 'chmod +x ./gradlew'
-       sh './gradlew clean build -x check'
+       sh './gradlew classes'
    }
    stage('Test') {
        milestone()
-       sh './gradlew build'
+       sh './gradlew test'
        archive "build/test-results/**/*"
        junit 'build/test-results/**/*.xml'
    }
