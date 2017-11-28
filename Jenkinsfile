@@ -18,6 +18,7 @@ node {
    stage('Test') {
        milestone()
        sh './gradlew build'
-       archiveArtifacts 'build/test-results/**'
+       archive "build/test-results/**/*"
+       junit 'build/test-results/**/*.xml'
    }
 }
