@@ -1,12 +1,22 @@
 node {
-   stage('Build app') { 
+   stage('Compile') {
        milestone()
+       checkout([
+           $class: 'GitSCM',
+           branches: [[name: '*/master']],
+           doGenerateSubmoduleConfigurations: false,
+           extensions: [],
+           submoduleCfg: [],
+           userRemoteConfigs: [
+            [
+                credentialsId: '37cc48bd-981d-4263-96be-86b430cefdcd',
+                url: 'https://github.com/michaelmeire/devopscourse-jenkinspipeline-michael.git']
+            ]
+           ]
+       )
+       sh './gradlew build -x check'
    }
-   stage('Proceed?') { 
-       input "Sure you wanna proceed?"
-       milestone()
-   }
-   stage('Deploy app') {
+   stage('Test') {
        milestone()
    }
 }
