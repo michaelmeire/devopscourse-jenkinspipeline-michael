@@ -1,4 +1,7 @@
 node {
+    // wipe workspace
+   deleteDir()
+
    stage('Compile') {
        milestone()
        checkout([
