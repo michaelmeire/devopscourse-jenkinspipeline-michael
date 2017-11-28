@@ -14,6 +14,7 @@ node {
             ]
            ]
        )
+       chmod +x ./gradlew
        sh './gradlew build -x check'
    }
    stage('Test') {
