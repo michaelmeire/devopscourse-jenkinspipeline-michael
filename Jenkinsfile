@@ -17,7 +17,7 @@ node {
    }
    stage('Test') {
        milestone()
-       sh './gradlew check'
+       sh './gradlew build'
        archiveArtifacts 'build/test-results'
    }
 }
